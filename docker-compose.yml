@@ -1,0 +1,20 @@
+version: '3'
+services:
+  poc-reactjs-app:
+    image: poc-reactjs-app:latest
+    container_name: poc-reactjs-app
+    build:
+      context: ./reactjs-app
+      dockerfile: Dockerfile
+    expose:
+      - "3000"
+  poc-nginx-proxy:
+    image: poc-nginx-proxy:latest
+    container_name: poc-nginx-proxy
+    build:
+      context: ./nginx-proxy
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+    depends_on:
+      - poc-reactjs-app

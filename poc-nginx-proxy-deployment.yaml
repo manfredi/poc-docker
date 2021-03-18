@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.22.0 (955b78124)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: poc-nginx-proxy
+  name: poc-nginx-proxy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: poc-nginx-proxy
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert
+        kompose.version: 1.22.0 (955b78124)
+      creationTimestamp: null
+      labels:
+        io.kompose.service: poc-nginx-proxy
+    spec:
+      containers:
+        - image: poc-nginx-proxy:latest
+          name: poc-nginx-proxy
+          ports:
+            - containerPort: 80
+          resources: {}
+      restartPolicy: Always
+status: {}

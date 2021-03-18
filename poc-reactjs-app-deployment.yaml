@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.22.0 (955b78124)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: poc-reactjs-app
+  name: poc-reactjs-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: poc-reactjs-app
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert
+        kompose.version: 1.22.0 (955b78124)
+      creationTimestamp: null
+      labels:
+        io.kompose.service: poc-reactjs-app
+    spec:
+      containers:
+        - image: poc-reactjs-app:latest
+          name: poc-reactjs-app
+          ports:
+            - containerPort: 3000
+          resources: {}
+      restartPolicy: Always
+status: {}
